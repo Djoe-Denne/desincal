@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PricingSection from '../../components/PricingSection';
+import servicesData from '../../data/services.json';
+
+const termiteServices = servicesData.themes
+  .find(theme => theme.id === 'termites')
+  ?.services.map(service => ({
+    title: service.subtitle,
+    price: service.price,
+    priceRange: service.priceUnit ? `${service.price}${service.priceUnit}` : undefined,
+    features: service.features,
+    duration: service.duration,
+    serviceId: service.id
+  })) || [];
+
+const pricingOptions = {
+  title: "Tarifs et Prestations",
+  subtitle: "Les tarifs varient selon la surface à traiter et le type de traitement nécessaire. Une évaluation sur place est recommandée.",
+  options: termiteServices,
+  note: "* Les tarifs sont donnés à titre indicatif et peuvent varier selon la configuration du bâtiment"
+};
+
+const title = "Traitement Anti-Termites Béziers | Protection Charpente | Desincal";
+const description = "Expert en traitement anti-termites à Béziers et dans l'Hérault. Protection préventive et curative de charpente, barrière chimique. Certification Certibiocide, intervention garantie.";
+const type = "article";
+const canonicalUrl = "https://desincal.fr/info/termites";
+---
+
+<Layout 
+  title={title}
+  description={description}
+  type={type}
+  canonicalUrl={canonicalUrl}
+>
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-pest-dark to-pest-dark/90 text-white rounded-2xl p-8 mb-12">
+          <h1 class="text-4xl font-bold mb-4">Protection Anti-Termites</h1>
+          <p class="text-xl text-white/90">Solutions professionnelles pour protéger votre maison</p>
+        </div>
+
+        <div class="prose max-w-none">
+          <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-8">
+            <h2 class="text-red-700 text-xl font-bold mb-2">⚠️ Protection essentielle</h2>
+            <p class="text-red-600">Les dégâts causés par les termites peuvent compromettre la structure de votre maison. Une intervention précoce est cruciale pour préserver votre patrimoine.</p>
+          </div>
+
+          <PricingSection 
+            title={pricingOptions.title}
+            subtitle={pricingOptions.subtitle}
+            options={pricingOptions.options}
+            note={pricingOptions.note}
+            client:load
+          />
+
+          <img src="/termite/termite-detail-identification-traitement.webp" 
+               alt="Termite en détail - Identification pour traitement professionnel" 
+               class="w-full rounded-lg mb-8" />
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h2 class="text-2xl font-bold text-pest-dark mb-4">Traitement de charpente</h2>
+              
+              <div class="space-y-6">
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <h3 class="font-bold text-pest-dark mb-2">Traitement préventif</h3>
+                  <p class="text-gray-600 mb-4">Pulvérisation d'un produit insecticide créant une barrière protectrice contre les termites et autres insectes xylophages.</p>
+                  <div class="flex items-center justify-between bg-white rounded-lg p-3">
+                    <span class="font-semibold">Coût</span>
+                    <span class="text-pest-green font-bold">15-25€/m²</span>
+                  </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <h3 class="font-bold text-pest-dark mb-2">Traitement curatif</h3>
+                  <p class="text-gray-600 mb-4">Injection de produits insecticides et fongicides directement dans le cœur de la structure en bois.</p>
+                  <div class="flex items-center justify-between bg-white rounded-lg p-3">
+                    <span class="font-semibold">Coût</span>
+                    <span class="text-pest-green font-bold">30-45€/m²</span>
+                  </div>
+                </div>
+              </div>
+
+              <img src="/termite/traitement-charpente-termites-beziers.jpg" 
+                   alt="Traitement de charpente contre les termites à Béziers" 
+                   class="w-full rounded-lg mt-6" />
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h2 class="text-2xl font-bold text-pest-dark mb-4">Traitement par injection dans le sol</h2>
+              
+              <img src="/termite/injection-sol-traitement-termites-schema.webp" 
+                   alt="Schéma d'injection dans le sol - Traitement anti-termites" 
+                   class="w-full rounded-lg mb-6" />
+
+              <div class="space-y-4">
+                <p class="text-gray-600">Création d'une barrière protectrice autour et sous les fondations de la maison.</p>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <h3 class="font-bold text-pest-dark mb-2">Tarifs indicatifs</h3>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between bg-white rounded-lg p-3">
+                      <span class="font-semibold">Prix par mètre linéaire</span>
+                      <span class="text-pest-green font-bold">25-45€/ml</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-white rounded-lg p-3">
+                      <span class="font-semibold">Maison 40ml</span>
+                      <span class="text-pest-green font-bold">1000-1800€</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-white rounded-lg p-3">
+                      <span class="font-semibold">Maison 60ml</span>
+                      <span class="text-pest-green font-bold">1500-2700€</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6 mb-12">
+            <h2 class="text-2xl font-bold text-pest-dark mb-6">Notre processus d'intervention</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-white rounded-lg p-4 shadow-sm">
+                <div class="w-8 h-8 bg-pest-green rounded-full flex items-center justify-center text-white font-bold mb-3">1</div>
+                <h3 class="font-bold text-pest-dark mb-2">Diagnostic</h3>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>• Inspection complète</li>
+                  <li>• Localisation des zones infestées</li>
+                  <li>• Analyse du type de sol</li>
+                </ul>
+              </div>
+              
+              <div class="bg-white rounded-lg p-4 shadow-sm">
+                <div class="w-8 h-8 bg-pest-green rounded-full flex items-center justify-center text-white font-bold mb-3">2</div>
+                <h3 class="font-bold text-pest-dark mb-2">Application</h3>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>• Perçage stratégique</li>
+                  <li>• Injection du produit</li>
+                  <li>• Traitement homogène</li>
+                </ul>
+              </div>
+              
+              <div class="bg-white rounded-lg p-4 shadow-sm">
+                <div class="w-8 h-8 bg-pest-green rounded-full flex items-center justify-center text-white font-bold mb-3">3</div>
+                <h3 class="font-bold text-pest-dark mb-2">Suivi</h3>
+                <ul class="text-sm text-gray-600 space-y-2">
+                  <li>• Vérification</li>
+                  <li>• Contrôle d'efficacité</li>
+                  <li>• Conseils préventifs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 rounded-xl p-6 mb-12">
+            <h2 class="text-xl font-bold text-pest-dark mb-4">Facteurs influençant le coût</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="space-y-3">
+                <div class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Surface totale à traiter</span>
+                </div>
+                <div class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Niveau d'infestation</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Accessibilité de la charpente</span>
+                </div>
+                <div class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Type de produit utilisé</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-pest-dark text-white rounded-xl p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Protégez votre maison dès maintenant</h2>
+            <p class="mb-6">Nos experts sont à votre disposition pour une évaluation gratuite</p>
+            <a href="/#contact" class="inline-block bg-pest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+              Demandez votre devis
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

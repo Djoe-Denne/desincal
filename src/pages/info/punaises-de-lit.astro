@@ -1,0 +1,211 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PricingSection from '../../components/PricingSection';
+import servicesData from '../../data/services.json';
+
+const punaisesServices = servicesData.themes
+  .find(theme => theme.id === 'punaises')
+  ?.services.map(service => ({
+    title: service.subtitle,
+    priceRange: service.priceRange,
+    features: service.features,
+    duration: service.duration,
+    serviceId: service.id
+  })) || [];
+
+const pricingOptions = {
+  title: "Tarifs et Prestations",
+  subtitle: "Ces tarifs s'appliquent aux infestations légères à modérées. Les infestations sévères nécessitent une évaluation personnalisée.",
+  options: punaisesServices,
+  note: "* Les tarifs peuvent varier selon le niveau d'infestation et la surface à traiter"
+};
+
+const title = "Traitement Punaises de Lit à Béziers et Alentours | Desincal";
+const description = "Expert en traitement des punaises de lit à Béziers et dans l'Hérault. Intervention rapide, devis gratuit. Élimination garantie des punaises de lit par des professionnels certifiés.";
+const type = "article";
+const canonicalUrl = "https://desincal.fr/info/punaises-de-lit";
+---
+
+<Layout 
+  title={title}
+  description={description}
+  type={type}
+  canonicalUrl={canonicalUrl}
+>
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-pest-dark to-pest-dark/90 text-white rounded-2xl p-8 mb-12">
+          <h1 class="text-4xl font-bold mb-4">Punaises de lit</h1>
+          <p class="text-xl text-white/90">Solution rapide et efficace pour retrouver votre tranquillité</p>
+        </div>
+        
+        <div class="prose max-w-none">
+          <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-8">
+            <h2 class="text-red-700 text-xl font-bold mb-2">⚠️ Agissez rapidement !</h2>
+            <p class="text-red-600">Plus vous attendez, plus l'infestation s'aggrave. Contactez-nous dès les premiers signes pour une intervention efficace.</p>
+          </div>
+          
+          <img src="/punaise/punaise-de-lit-piqure-traitement-beziers.jpg" alt="Punaise de lit sur la peau - Traitement professionnel à Béziers" class="w-full rounded-lg mb-8" />
+          
+          <div class="bg-pest-green/10 p-6 rounded-xl border border-pest-green/20 mb-8">
+            <h2 class="text-2xl font-bold text-pest-dark mb-4">Points Clés</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex items-start space-x-3">
+                <div class="bg-pest-green rounded-full p-2 mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Intervention Rapide</h3>
+                  <p class="text-sm">Disponible sous 24-48h</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3">
+                <div class="bg-pest-green rounded-full p-2 mt-1">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold">Garantie</h3>
+                  <p class="text-sm">Retour gratuit sous 3 semaines</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <PricingSection 
+            title={pricingOptions.title}
+            subtitle={pricingOptions.subtitle}
+            options={pricingOptions.options}
+            note={pricingOptions.note}
+            client:load
+          />
+
+          <h2 class="text-2xl font-bold text-pest-dark mb-4">Cycle de Vie des Punaises de Lit</h2>
+          
+          <img src="/punaise/cycle-vie-punaise-de-lit-stades-developpement.webp" alt="Cycle de vie des punaises de lit - Les 5 stades de développement" class="w-full rounded-lg my-8" />
+          
+          <div class="bg-gray-50 rounded-xl p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-bold text-pest-dark mb-2">L'œuf</h3>
+                <p class="text-gray-600">De la taille d'une tête d'épingle, les œufs sont translucides et souvent cachés dans les fissures ou les coutures des matelas.</p>
+              </div>
+              <div>
+                <h3 class="font-bold text-pest-dark mb-2">La nymphe</h3>
+                <p class="text-gray-600">Les punaises nouvellement écloses passent par 5 stades avant de devenir adultes. Elles se nourrissent de sang pour grandir.</p>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-pest-dark mb-4">Les Signes d'une Infestation</h2>
+          
+          <img src="/punaise/signes-infestation-punaises-lit-matelas.webp" alt="Signes d'infestation de punaises de lit - Taches et traces sur matelas" class="w-full rounded-lg my-8" />
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {['Taches de sang sur les draps', 'Excréments (points noirs)', 'Morsures alignées', 'Odeur sucrée'].map((sign) => (
+              <div class="flex items-start space-x-3">
+                <div class="text-red-500">⚠️</div>
+                <p class="font-medium">{sign}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2 class="text-2xl font-bold text-pest-dark mb-4">Notre Processus d'Inspection</h2>
+          
+          <img src="/punaise/inspection-detection-punaises-lit-professionnelle.jpg" alt="Inspection professionnelle punaises de lit - Détection par expert Desincal" class="w-full rounded-lg my-8" />
+
+          <h2 class="text-2xl font-bold text-pest-dark mb-4">Traitement Professionnel</h2>
+          
+          <img src="/punaise/traitement-professionnel-punaises-lit-beziers.jpg" alt="Traitement professionnel punaises de lit - Intervention expert à Béziers" class="w-full rounded-lg my-8" />
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-xl font-bold text-pest-dark mb-4">Traitement Chimique</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-pest-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Rapide et efficace</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-pest-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Action directe sur les punaises</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <h3 class="text-xl font-bold text-pest-dark mb-4">Vapeur Sèche</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-pest-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Solution écologique</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-pest-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Idéal pour zones sensibles</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-pest-dark mb-4">Nos Conseils pour Prévenir une Infestation</h2>
+          
+          <img src="/punaise/prevention-punaises-lit-inspection-valise.webp" alt="Prévention punaises de lit - Inspection des bagages et valises" class="w-full rounded-lg my-8" />
+          
+          <div class="bg-blue-50 rounded-xl p-6 mb-8">
+            <h3 class="text-xl font-bold text-pest-dark mb-4">Mesures Préventives Essentielles</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <ul class="space-y-3">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Inspectez les meubles d'occasion</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Protégez votre matelas</span>
+                </li>
+              </ul>
+              <ul class="space-y-3">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Examinez vos bagages après voyage</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-5 h-5 text-blue-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Lavez à haute température</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-pest-dark text-white rounded-xl p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Besoin d'une intervention rapide ?</h2>
+            <p class="mb-6">Nos experts sont à votre disposition pour une intervention efficace</p>
+            <a href="/#contact" class="inline-block bg-pest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+              Contactez-nous
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

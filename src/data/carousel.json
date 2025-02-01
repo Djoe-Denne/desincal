@@ -1,0 +1,22 @@
+{
+  "slides": [
+    {
+      "title": "Dératisation",
+      "subtitle": "Protection durable, sérénité assurée",
+      "image": "/carousel/deratisation-professionnelle-beziers-rat-nuisible.jpg?auto=format&fit=crop&w=1920",
+      "buttonText": "Demandez votre devis gratuit"
+    },
+    {
+      "title": "Désinsectisation",
+      "subtitle": "Élimination efficace et rapide",
+      "image": "/carousel/desinsectisation-professionnelle-beziers-cafard.jpg?auto=format&fit=crop&w=1920",
+      "buttonText": "Demandez votre devis gratuit"
+    },
+    {
+      "title": "Protection Anti-Nuisibles",
+      "subtitle": "Solutions professionnelles garanties",
+      "image": "/carousel/traitement-anti-nuisibles-professionnel-beziers.jpg?auto=format&fit=crop&w=1920",
+      "buttonText": "Demandez votre devis gratuit"
+    }
+  ]
+}

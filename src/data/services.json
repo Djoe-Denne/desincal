@@ -1,0 +1,203 @@
+{
+  "themes": [
+    {
+      "id": "desinsectisation",
+      "title": "Désinsectisation",
+      "description": "Élimination des insectes nuisibles",
+      "icon": "bug",
+      "services": [
+        {
+          "id": "desinsectisation-appartement",
+          "title": "Désinsectisation",
+          "subtitle": "Appartement (intérieur)",
+          "price": "100",
+          "features": [
+            "Elimination des fourmis et cafards",
+            "Application de gel dans la cuisine et la salle de bain",
+            "Intervention de 30 à 45 minutes",
+            "4 à 6 mois de protection"
+          ],
+          "infoPage": "/info/cafards",
+          "duration": "Durée: 30-45 minutes"
+        },
+        {
+          "id": "desinsectisation-villa-interieur",
+          "title": "Désinsectisation",
+          "subtitle": "Villa (intérieur)",
+          "price": "110",
+          "features": [
+            "Elimination des fourmis, cafards",
+            "Application de gel dans la cuisine et la salle de bain",
+            "Intervention de 30 à 45 minutes",
+            "4 à 6 mois de protection"
+          ],
+          "infoPage": "/info/cafards",
+          "duration": "Durée: 30-45 minutes"
+        },
+        {
+          "id": "desinsectisation-villa-exterieur",
+          "title": "Désinsectisation",
+          "subtitle": "Villa (extérieur)",
+          "price": "100",
+          "features": [
+            "Elimination des fourmis, cafards",
+            "Extérieur",
+            "Traitement des regards",
+            "Intervention de 20 à 30 minutes",
+            "4 à 6 mois de protection"
+          ],
+          "infoPage": "/info/cafards",
+          "duration": "Durée: 20-30 minutes"
+        },
+        {
+          "id": "desinsectisation-villa-complete",
+          "title": "Désinsectisation",
+          "subtitle": "Villa (complet)",
+          "price": "150",
+          "features": [
+            "Elimination des fourmis, cafards",
+            "Intérieur et extérieur",
+            "Application de gel dans la cuisine et la salle de bain",
+            "Traitement des regards",
+            "Intervention de 45 minutes à 1 heure"
+          ],
+          "infoPage": "/info/cafards",
+          "duration": "Durée: 45-60 minutes"
+        }
+      ]
+    },
+    {
+      "id": "deratisation",
+      "title": "Dératisation",
+      "description": "Élimination des rongeurs",
+      "icon": "rat",
+      "services": [
+        {
+          "id": "deratisation-complete",
+          "title": "Dératisation",
+          "subtitle": "Villa (complet)",
+          "price": "250",
+          "features": [
+            "Elimination de rongeurs nuisibles",
+            "Intérieur et extérieur",
+            "Pose de 4 boîtes d'appâtages sécurisées",
+            "Mise en place de raticide dans les faux plafonds",
+            "Contrôle et réapprovisionnement 2 semaines après l'intervention initiale",
+            "Possibilité de contrat pour un suivi 70 euro par passage"
+          ],
+          "infoPage": "/info/rongeurs",
+          "duration": "Durée: 2-3 heures"
+        }
+      ]
+    },
+    {
+      "id": "punaises",
+      "title": "Punaises de lit",
+      "description": "Traitement anti-punaises",
+      "icon": "bed",
+      "services": [
+        {
+          "id": "punaises-studio",
+          "title": "Punaises de lit",
+          "subtitle": "Studio",
+          "priceRange": "150€ - 300€",
+          "features": [
+            "Inspection approfondie",
+            "Traitement chimique professionnel",
+            "Traitement des zones infestées",
+            "Conseils de prévention",
+            "Garantie de 3 mois"
+          ],
+          "infoPage": "/info/punaises-de-lit",
+          "duration": "Durée: 2-3 heures"
+        },
+        {
+          "id": "punaises-appartement",
+          "title": "Punaises de lit",
+          "subtitle": "Appartement",
+          "priceRange": "250€ - 500€",
+          "features": [
+            "Inspection complète de toutes les pièces",
+            "Traitement chimique professionnel",
+            "Traitement des meubles et textiles",
+            "Suivi post-traitement",
+            "Garantie de 3 mois"
+          ],
+          "infoPage": "/info/punaises-de-lit",
+          "duration": "Durée: 3-4 heures"
+        },
+        {
+          "id": "punaises-maison",
+          "title": "Punaises de lit",
+          "subtitle": "Maison",
+          "priceRange": "400€ - 800€",
+          "features": [
+            "Inspection complète de l'habitation",
+            "Traitement chimique intégral",
+            "Traitement de tous les espaces",
+            "Suivi personnalisé",
+            "Garantie de 3 mois"
+          ],
+          "infoPage": "/info/punaises-de-lit",
+          "duration": "Durée: 4-6 heures"
+        }
+      ]
+    },
+    {
+      "id": "termites",
+      "title": "Anti-Termites",
+      "description": "Protection anti-termites",
+      "icon": "termite",
+      "services": [
+        {
+          "id": "termites-preventif",
+          "title": "Anti-Termites",
+          "subtitle": "Traitement préventif",
+          "price": "20",
+          "priceUnit": "€/m²",
+          "features": [
+            "Inspection de la charpente",
+            "Pulvérisation insecticide",
+            "Barrière protectrice",
+            "Certificat de traitement",
+            "Garantie 5 ans"
+          ],
+          "infoPage": "/info/termites",
+          "duration": "Selon surface"
+        },
+        {
+          "id": "termites-curatif",
+          "title": "Anti-Termites",
+          "subtitle": "Traitement curatif",
+          "price": "35",
+          "priceUnit": "€/m²",
+          "features": [
+            "Inspection approfondie",
+            "Injection de produits",
+            "Traitement en profondeur",
+            "Élimination des colonies",
+            "Garantie 10 ans"
+          ],
+          "infoPage": "/info/termites",
+          "duration": "Selon infestation"
+        },
+        {
+          "id": "termites-barriere",
+          "title": "Anti-Termites",
+          "subtitle": "Barrière chimique",
+          "price": "35",
+          "priceUnit": "€/ml",
+          "features": [
+            "Étude du terrain",
+            "Injection dans le sol",
+            "Protection périmétrique",
+            "Barrière anti-termites",
+            "Garantie 10 ans"
+          ],
+          "infoPage": "/info/termites",
+          "duration": "Selon périmètre"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  canonicalUrl?: string;
+  type?: string;
+}
+
+const { 
+  title, 
+  description = "Expert en désinsectisation et dératisation à Corneilhan, Béziers et alentours. Intervention rapide contre punaises de lit, cafards, termites et rongeurs.",
+  canonicalUrl = "https://desincal.fr",
+  type = "website"
+} = Astro.props;
+
+const localCities = [
+  "Lignan-sur-Orb", "Thézan-lès-Béziers", "Pailhès", "Lieuran-lès-Béziers", "Maraussan",
+  "Puimisson", "Bassan", "Boujan-sur-Libron", "Murviel-lès-Béziers", "Béziers",
+  "Espondeilhan", "Cazouls-lès-Béziers", "Puissalicon", "Maureilhan", "Saint-Geniès-de-Fontedit",
+  "Magalas", "Coulobres", "Servian", "Montady", "Abeilhan", "Colombiers", "Autignac",
+  "Pouzolles", "Causses-et-Veyran", "Villeneuve-lès-Béziers"
+];
+
+const localKeywords = localCities.map(city => [
+  `désinsectisation ${city}`,
+  `dératisation ${city}`,
+  `punaises de lit ${city}`,
+  `traitement termites ${city}`,
+  `exterminateur ${city}`,
+  `nuisibles ${city}`,
+  `cafards ${city}`,
+  `traitement insectes ${city}`
+]).flat().join(', ');
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Desincal",
+  "description": `Expert en désinsectisation, dératisation et désinfection à Corneilhan et dans tout le Biterrois. Intervention rapide contre punaises de lit, cafards, termites et rongeurs. Service disponible à ${localCities.slice(0, 5).join(', ')} et dans toute la région de Béziers.`,
+  "image": [
+    "https://desincal.fr/logo.png",
+    "https://desincal.fr/carousel/insect-carousel.jpg",
+    "https://desincal.fr/carousel/rat-carousel.jpg"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9b Plan du Rouch",
+    "addressLocality": "Corneilhan",
+    "addressRegion": "Occitanie",
+    "postalCode": "34490",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.389,
+    "longitude": 3.171
+  },
+  "url": "https://desincal.fr",
+  "telephone": "+33 7 66 37 05 82",
+  "email": "contact@desincal.fr",
+  "openingHours": [
+    "Mo-Fr 08:00-19:00",
+    "Sa 08:00-12:00"
+  ],
+  "priceRange": "€€",
+  "sameAs": [
+    "https://www.facebook.com/Desincal"
+  ],
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.389,
+      "longitude": 3.171
+    },
+    "geoRadius": 80000
+  },
+  "serviceArea": {
+    "@type": "Place",
+    "name": "Région de Béziers",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Hérault",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.389,
+        "longitude": 3.171
+      },
+      "geoRadius": 80000
+    }
+  },
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "logo": "https://desincal.fr/logo.png",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services de désinsectisation et dératisation",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Traitement anti-punaises de lit",
+          "description": "Élimination complète des punaises de lit à Béziers et ses environs"
+        },
+        "areaServed": localCities
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Dératisation professionnelle",
+          "description": "Service de dératisation pour particuliers et professionnels dans le Biterrois"
+        },
+        "areaServed": localCities
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Désinsectisation",
+          "description": "Traitement contre les cafards et autres insectes nuisibles"
+        },
+        "areaServed": localCities
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Traitement anti-termites",
+          "description": "Protection et traitement contre les termites dans l'Hérault"
+        },
+        "areaServed": localCities
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "124"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Marie D."
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "datePublished": "2024-02-15",
+      "reviewBody": "Intervention rapide et efficace contre les punaises de lit. Très professionnel !"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Pierre L."
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "datePublished": "2024-02-10",
+      "reviewBody": "Excellent service de dératisation, je recommande vivement."
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <title>{title} | Desincal - Expert en désinsectisation à Béziers</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content={`désinsectisation Béziers, dératisation Hérault, punaises de lit 34, traitement cafards Béziers, anti-termites Occitanie, exterminateur Corneilhan, ${localKeywords}`} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Desincal" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="fr" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    
+    <!-- Geo Meta Tags -->
+    <meta name="geo.region" content="FR-34" />
+    <meta name="geo.placename" content="Corneilhan" />
+    <meta name="geo.position" content="43.389;3.171" />
+    <meta name="ICBM" content="43.389, 3.171" />
+    
+    <!-- Local Business Meta Tags -->
+    <meta name="locality" content="Corneilhan" />
+    <meta name="region" content="Hérault" />
+    <meta name="postal-code" content="34490" />
+    <meta name="country-name" content="France" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:site_name" content="Desincal" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content="https://desincal.fr/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:street-address" content="9b Plan du Rouch" />
+    <meta property="og:locality" content="Corneilhan" />
+    <meta property="og:region" content="Hérault" />
+    <meta property="og:postal-code" content="34490" />
+    <meta property="og:country-name" content="France" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://desincal.fr/logo.png" />
+    
+    <!-- Mobile Meta Tags -->
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Desincal" />
+    <meta name="theme-color" content="#34D399" />
+    
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-XXXXXXX');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center">
+            <a href="/" aria-label="Accueil Desincal">
+              <img src="/logo.png" alt="Logo Desincal - Expert en désinsectisation à Béziers" class="h-16 w-auto" />
+            </a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/" class="text-pest-dark hover:text-pest-green transition">Accueil</a>
+            <div class="relative group h-20 flex items-center">
+              <button 
+                class="text-pest-dark hover:text-pest-green transition flex items-center"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                Informations
+                <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="absolute left-0 top-full mt-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div class="py-1" role="menu" aria-orientation="vertical">
+                  <a href="/info/punaises-de-lit" class="block px-4 py-2 text-sm text-pest-dark hover:bg-gray-100" role="menuitem">Punaises de lit</a>
+                  <a href="/info/termites" class="block px-4 py-2 text-sm text-pest-dark hover:bg-gray-100" role="menuitem">Termites</a>
+                  <a href="/info/cafards" class="block px-4 py-2 text-sm text-pest-dark hover:bg-gray-100" role="menuitem">Cafards</a>
+                  <a href="/info/rongeurs" class="block px-4 py-2 text-sm text-pest-dark hover:bg-gray-100" role="menuitem">Rongeurs</a>
+                </div>
+              </div>
+            </div>
+            <a href="/#services" class="text-pest-dark hover:text-pest-green transition">Services</a>
+            <a href="/#contact" class="text-pest-dark hover:text-pest-green transition">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <footer class="bg-pest-dark text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contact</h3>
+            <div class="space-y-2">
+              <p class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                </svg>
+                <a href="tel:+33766370582" class="hover:text-pest-green">07 66 37 05 82</a>
+              </p>
+              <p class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+                <a href="mailto:contact@desincal.fr" class="hover:text-pest-green">contact@desincal.fr</a>
+              </p>
+              <p class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
+                </svg>
+                <span>34490 Corneilhan</span>
+              </p>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Liens utiles</h3>
+            <ul class="space-y-2">
+              <li><a href="/legal#mentions-legales" class="hover:text-pest-green">Mentions légales</a></li>
+              <li><a href="/legal#politique-confidentialite" class="hover:text-pest-green">Politique de confidentialité</a></li>
+              <li><a href="/legal#cgv" class="hover:text-pest-green">CGV</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Horaires</h3>
+            <p>Lundi - Vendredi: 8h - 17h</p>
+            <p>Samedi: 8h - 17h</p>
+            <p>Dimanche: Fermé</p>
+          </div>
+        </div>
+        <div class="text-center pt-8 border-t border-white/10">
+          <p>&copy; {new Date().getFullYear()} Desincal. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 transform translate-y-full transition-transform duration-300 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex-1">
+            <p class="text-pest-dark">
+              Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer, vous acceptez notre utilisation des cookies.
+              <a href="/legal#politique-confidentialite" class="text-pest-green hover:underline">En savoir plus</a>
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <button 
+              id="accept-cookies" 
+              class="bg-pest-green text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors"
+              aria-label="Accepter les cookies"
+            >
+              Accepter
+            </button>
+            <button 
+              id="reject-cookies" 
+              class="bg-gray-200 text-pest-dark px-6 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+              aria-label="Refuser les cookies"
+            >
+              Refuser
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize EmailJS
+      (function() {
+        if (typeof window !== 'undefined' && window.emailjs) {
+          emailjs.init("6K1Kw14EsbSqtO2YZ");
+        }
+      })();
+
+      // Track form submissions
+      document.addEventListener('DOMContentLoaded', () => {
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+          contactForm.addEventListener('submit', () => {
+            // Push form submission event to dataLayer
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'form_submission',
+              'form_name': 'contact_form'
+            });
+          });
+        }
+
+        // Track phone clicks
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        phoneLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'phone_click',
+              'phone_number': link.href.replace('tel:', '')
+            });
+          });
+        });
+
+        // Track email clicks
+        const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+        emailLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'email_click',
+              'email_address': link.href.replace('mailto:', '')
+            });
+          });
+        });
+
+        // Track service selection
+        const serviceSelect = document.getElementById('service-select');
+        if (serviceSelect) {
+          serviceSelect.addEventListener('change', (e) => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'service_selection',
+              'service_id': e.target.value
+            });
+          });
+        }
+
+        // Track scroll depth
+        let scrollDepthMarkers = [25, 50, 75, 100];
+        let scrollDepthTracked = new Set();
+
+        window.addEventListener('scroll', () => {
+          const winHeight = window.innerHeight;
+          const docHeight = document.documentElement.scrollHeight;
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+
+          scrollDepthMarkers.forEach(marker => {
+            if (scrollPercent >= marker && !scrollDepthTracked.has(marker)) {
+              scrollDepthTracked.add(marker);
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                'event': 'scroll_depth',
+                'scroll_percent': marker
+              });
+            }
+          });
+        });
+
+        // Cookie consent management
+        const cookieConsent = document.getElementById('cookie-consent');
+        const acceptButton = document.getElementById('accept-cookies');
+        const rejectButton = document.getElementById('reject-cookies');
+
+        if (cookieConsent && acceptButton && rejectButton) {
+          // Check if user has already made a choice
+          const consentChoice = localStorage.getItem('cookie-consent');
+          if (!consentChoice) {
+            // Show banner after a short delay
+            setTimeout(() => {
+              cookieConsent.classList.remove('translate-y-full');
+            }, 1000);
+          }
+
+          acceptButton.addEventListener('click', () => {
+            localStorage.setItem('cookie-consent', 'accepted');
+            cookieConsent.classList.add('translate-y-full');
+          });
+
+          rejectButton.addEventListener('click', () => {
+            localStorage.setItem('cookie-consent', 'rejected');
+            cookieConsent.classList.add('translate-y-full');
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

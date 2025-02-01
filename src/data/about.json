@@ -1,0 +1,22 @@
+{
+  "features": [
+    {
+      "title": "Rapidité et Efficacité",
+      "description": "Fort de 17 ans d'expérience sur le terrain en temps qu'applicateur en Nouvelle calédonie, DESINCAL est à vos côtés pour l'extermination de nuisibles.",
+      "details": "Nos avantages -Rapidité d'intervention -Proximité -Interlocuteur dédié -Suivi, maintenance -Gestion des urgences",
+      "iconType": "certification"
+    },
+    {
+      "title": "Prix modulables",
+      "description": "Nos garanties sont adaptées en fonction de chaque prestation. Nos prix sont clairs et disponibles dans notre grille tarifaire.",
+      "details": "Toute augmentation due à un éloignement ou une prolifération excessive vous sera expliquée lors de l'évaluation par téléphone. Si le problème persiste nous revenons à nos frais dans les 3 semaines suivant l'intervention.",
+      "iconType": "pricing"
+    },
+    {
+      "title": "Votre vie privée, notre priorité",
+      "description": "Nous vous assurons du respect de votre habitation et de votre vie privée lors des différentes interventions.",
+      "details": "Nous nous engageons également à ne jamais divulguer quelques informations en rapport avec nos interventions ou toutes autres sujets que vous auriez portés à notre connaissance.",
+      "iconType": "privacy"
+    }
+  ]
+}
