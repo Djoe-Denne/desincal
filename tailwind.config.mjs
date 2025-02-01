@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         'pest-green': '#34D399',
+        'pest-green-dark': '#059669',
         'pest-blue': '#3B82F6',
         'pest-dark': '#1F2937',
       },

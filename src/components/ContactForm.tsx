@@ -19,7 +19,6 @@ export default function ContactForm() {
   const [status, setStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
 
   useEffect(() => {
-    // Check for service parameter in URL
     const params = new URLSearchParams(window.location.hash.split('?')[1]);
     const serviceId = params.get('service');
     if (serviceId) {
@@ -41,13 +40,6 @@ export default function ContactForm() {
       const selectedService = allServices.find(s => s.id === formData.service);
       const serviceTitle = selectedService ? `${selectedService.title} - ${selectedService.subtitle}` : formData.service;
 
-      // Track form submission start
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        'event': 'form_submission_start',
-        'service_requested': serviceTitle
-      });
-
       const templateParams = {
         service: serviceTitle,
         name: formData.name,
@@ -63,18 +55,11 @@ export default function ContactForm() {
         '6K1Kw14EsbSqtO2YZ'
       );
 
-      // Track successful form submission
-      window.dataLayer.push({
-        'event': 'form_submission_success',
-        'service_requested': serviceTitle
-      });
-
       setStatus({
         type: 'success',
         message: 'Votre message a été envoyé avec succès. Nous vous contacterons bientôt.'
       });
 
-      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -86,13 +71,6 @@ export default function ContactForm() {
 
     } catch (error) {
       console.error('Failed to send email:', error);
-      
-      // Track form submission error
-      window.dataLayer.push({
-        'event': 'form_submission_error',
-        'error_message': error.message
-      });
-
       setStatus({
         type: 'error',
         message: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.'
@@ -110,55 +88,70 @@ export default function ContactForm() {
         </h2>
         <div className="max-w-2xl mx-auto">
           {status && (
-            <div className={`mb-6 p-4 rounded-lg ${
-              status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-            }`}>
+            <div 
+              className={`mb-6 p-4 rounded-lg ${
+                status.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+              }`}
+              role="alert"
+              aria-live="polite"
+            >
               {status.message}
             </div>
           )}
           
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             <div>
-              <label className="block text-gray-700 mb-2">Nom</label>
+              <label htmlFor="name" className="block text-gray-800 font-medium mb-2">Nom *</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue"
+                id="name"
+                name="name"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue bg-white text-gray-900"
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                 required
                 disabled={loading}
+                aria-required="true"
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Email</label>
+              <label htmlFor="email" className="block text-gray-800 font-medium mb-2">Email *</label>
               <input
                 type="email"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue"
+                id="email"
+                name="email"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue bg-white text-gray-900"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 required
                 disabled={loading}
+                aria-required="true"
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Téléphone</label>
+              <label htmlFor="phone" className="block text-gray-800 font-medium mb-2">Téléphone *</label>
               <input
                 type="tel"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue"
+                id="phone"
+                name="phone"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue bg-white text-gray-900"
                 value={formData.phone}
                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
                 required
                 disabled={loading}
+                aria-required="true"
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Type de service</label>
+              <label htmlFor="service-select" className="block text-gray-800 font-medium mb-2">Type de service *</label>
               <select
                 id="service-select"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue"
+                name="service"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue bg-white text-gray-900"
                 value={formData.service}
                 onChange={(e) => setFormData({...formData, service: e.target.value})}
                 disabled={loading}
+                aria-required="true"
               >
                 {allServices.map((service) => (
                   <option key={service.id} value={service.id}>
@@ -168,35 +161,44 @@ export default function ContactForm() {
               </select>
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Message</label>
+              <label htmlFor="message" className="block text-gray-800 font-medium mb-2">Message *</label>
               <textarea
-                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue"
+                id="message"
+                name="message"
+                className="w-full px-4 py-2 border rounded-lg focus:ring-pest-blue focus:border-pest-blue bg-white text-gray-900"
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                 required
                 disabled={loading}
+                aria-required="true"
               ></textarea>
             </div>
             <div className="flex items-start gap-2">
               <input
                 type="checkbox"
                 id="consent"
-                className="mt-1"
+                name="consent"
+                className="mt-1.5"
                 checked={formData.consent}
                 onChange={(e) => setFormData({...formData, consent: e.target.checked})}
                 required
                 disabled={loading}
+                aria-required="true"
               />
-              <label htmlFor="consent" className="text-sm text-gray-600">
+              <label htmlFor="consent" className="text-sm text-gray-700">
                 J'accepte que mes données personnelles soient collectées pour le traitement de ma demande. Pour en savoir plus sur la gestion de vos données et vos droits, consultez notre{' '}
-                <a href="/legal#politique-confidentialite" className="text-pest-green hover:underline">politique de confidentialité</a>.
+                <a href="/legal#politique-confidentialite" className="text-pest-green hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pest-green">
+                  politique de confidentialité
+                </a>
+                .
               </label>
             </div>
             <button
               type="submit"
-              className="w-full bg-pest-green text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-pest-green text-white py-3 px-8 rounded-lg font-semibold hover:bg-pest-green-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pest-green disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={loading}
+              aria-busy={loading}
             >
               {loading ? 'Envoi en cours...' : 'Envoyer le message'}
             </button>

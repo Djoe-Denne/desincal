@@ -7,7 +7,7 @@ const features = [
     details: 'Nos avantages -Rapidité d\'intervention -Proximité -Interlocuteur dédié -Suivi, maintenance -Gestion des urgences',
     icon: (
       <div className="w-24 h-24 mb-6 relative">
-        <svg className="w-full h-full text-pest-green" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg className="w-full h-full text-pest-green" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 2v2m10 10h-2M4 14H2m3.268-7.732l1.414 1.414M19.732 4.268l-1.414 1.414" />
         </svg>
