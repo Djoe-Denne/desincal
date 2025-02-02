@@ -88,13 +88,13 @@ export default function Services() {
 
         {/* Theme Selection - Updated container and positioning */}
         <div className="flex justify-center items-center mb-16 relative h-48">
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
-            <div className="flex items-center relative" style={{ minWidth: `${themes.length * 60}px` }}>
+          <div className="absolute left-1/2 -translate-x-[60%] flex items-center">
+            <div className="flex items-center relative" style={{ minWidth: `${themes.length * 160}px` }}>
               {themes.map((theme) => {
                 const position = getThemePosition(theme.id);
                 const isSelected = theme.id === selectedTheme;
                 const scale = isSelected ? 1 : 0.6;
-                const translateX = `${position * (isMobile ? 60 : 120)}px`;
+                const translateX = `${position * 160}px`;
 
                 return (
                   <button
