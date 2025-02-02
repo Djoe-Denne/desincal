@@ -192,7 +192,7 @@ const canonicalUrl = "https://desincal.fr/info/termites";
           <div class="bg-pest-dark text-white rounded-xl p-8 text-center">
             <h2 class="text-2xl font-bold mb-4">Protégez votre maison dès maintenant</h2>
             <p class="mb-6">Nos experts sont à votre disposition pour une évaluation gratuite</p>
-            <a href="/#contact" class="inline-block bg-pest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+            <a href="/?theme=termites#services" class="inline-block bg-pest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
               Demandez votre devis
             </a>
           </div>
@@ -201,3 +201,16 @@ const canonicalUrl = "https://desincal.fr/info/termites";
     </div>
   </main>
 </Layout>
+
+<script>
+  // Handle pricing card clicks to set both theme and service
+  document.addEventListener('DOMContentLoaded', () => {
+    const pricingCards = document.querySelectorAll('[data-service-id]');
+    pricingCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const serviceId = (e.currentTarget as HTMLElement).dataset.serviceId;
+        window.location.href = `/?theme=termites&service=${serviceId}#contact`;
+      });
+    });
+  });
+</script>

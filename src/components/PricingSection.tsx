@@ -17,13 +17,6 @@ interface PricingSectionProps {
 }
 
 export default function PricingSection({ title, subtitle, options, note }: PricingSectionProps) {
-  const redirectToContact = (serviceId?: string) => {
-    if (serviceId) {
-      // Add #contact to the URI to ensure the contact section is targeted
-      window.location.href = `/?section=contact#contact?service=${serviceId}`;
-    }
-  };
-
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-12">
       <h2 className="text-2xl font-bold text-pest-dark mb-6">{title}</h2>
@@ -41,7 +34,7 @@ export default function PricingSection({ title, subtitle, options, note }: Prici
         {options.map((option, index) => (
           <button
             key={index}
-            onClick={() => redirectToContact(option.serviceId)}
+            data-service-id={option.serviceId}
             className="text-left w-full bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 transform hover:-translate-y-1"
           >
             <h3 className="text-xl font-bold mb-2">{option.title}</h3>

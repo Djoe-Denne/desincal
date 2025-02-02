@@ -200,7 +200,7 @@ const canonicalUrl = "https://desincal.fr/info/punaises-de-lit";
           <div class="bg-pest-dark text-white rounded-xl p-8 text-center">
             <h2 class="text-2xl font-bold mb-4">Besoin d'une intervention rapide ?</h2>
             <p class="mb-6">Nos experts sont à votre disposition pour une intervention efficace</p>
-            <a href="/#contact" class="inline-block bg-pest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+            <a href="/?theme=punaises#services" class="inline-block bg-pest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
               Contactez-nous
             </a>
           </div>
@@ -209,3 +209,16 @@ const canonicalUrl = "https://desincal.fr/info/punaises-de-lit";
     </div>
   </main>
 </Layout>
+
+<script>
+  // Handle pricing card clicks to set both theme and service
+  document.addEventListener('DOMContentLoaded', () => {
+    const pricingCards = document.querySelectorAll('[data-service-id]');
+    pricingCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const serviceId = (e.currentTarget as HTMLElement).dataset.serviceId;
+        window.location.href = `/?theme=punaises&service=${serviceId}#contact`;
+      });
+    });
+  });
+</script>

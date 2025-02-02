@@ -19,10 +19,18 @@ export default function ContactForm() {
   const [status, setStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.hash.split('?')[1]);
+    // Get both service and theme parameters from URL
+    const params = new URLSearchParams(window.location.search);
     const serviceId = params.get('service');
+    
     if (serviceId) {
       setFormData(prev => ({ ...prev, service: serviceId }));
+      
+      // Find and select the service in the dropdown
+      const serviceSelect = document.getElementById('service-select') as HTMLSelectElement;
+      if (serviceSelect) {
+        serviceSelect.value = serviceId;
+      }
     }
   }, []);
 
