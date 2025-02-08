@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "Traitement Punaises de Lit à Béziers et Alentours | Desincal",
+    "description": "Expert en traitement des punaises de lit à Béziers et dans l'Hérault. Intervention rapide, devis gratuit. Élimination garantie des punaises de lit par des professionnels certifiés."
+  },
+  "hero": {
+    "title": "Punaises de lit",
+    "subtitle": "Solution rapide et efficace pour retrouver votre tranquillité"
+  },
+  "alert": {
+    "title": "⚠️ Agissez rapidement !",
+    "message": "Plus vous attendez, plus l'infestation s'aggrave. Contactez-nous dès les premiers signes pour une intervention efficace."
+  },
+  "keyPoints": {
+    "title": "Points Clés",
+    "items": [
+      {
+        "title": "Intervention Rapide",
+        "description": "Disponible sous 24-48h"
+      },
+      {
+        "title": "Garantie",
+        "description": "Retour gratuit sous 3 semaines"
+      }
+    ]
+  },
+  "lifecycle": {
+    "title": "Cycle de Vie des Punaises de Lit",
+    "stages": {
+      "egg": {
+        "title": "L'œuf",
+        "description": "De la taille d'une tête d'épingle, les œufs sont translucides et souvent cachés dans les fissures ou les coutures des matelas."
+      },
+      "nymph": {
+        "title": "La nymphe",
+        "description": "Les punaises nouvellement écloses passent par 5 stades avant de devenir adultes. Elles se nourrissent de sang pour grandir."
+      }
+    }
+  }
+}

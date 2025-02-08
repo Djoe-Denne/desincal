@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PricingSection from '../../components/PricingSection';
+import { getPage, getAllServices } from '../../lib/api';
+
+export async function getStaticPaths() {
+  const slugs = ['cafards', 'punaises-de-lit', 'rongeurs', 'termites'];
+  
+  return slugs.map(slug => ({
+    params: { slug },
+    props: { slug }
+  }));
+}
+
+const { slug } = Astro.params;
+
+// Try to get data from Strapi
+let page = await getPage(`info/${slug}`);
+let services = await getAllServices();
+
+// Fallback to static data if Strapi is not available
+if (!page) {
+  const staticData = await import(`../../data/pages/${slug}.json`);
+  page = {
+    id: 0,
+    attributes: {
+      title: staticData.meta.title,
+      description: staticData.meta.description,
+      content: staticData.content
+    }
+  };
+}
+
+if (!services || services.length === 0) {
+  const staticServices = await import('../../data/services.json');
+  services = staticServices.themes;
+}
+
+// Get relevant services based on the page
+const theme = services.find(theme => {
+  switch (slug) {
+    case 'cafards':
+      return theme.id === 'desinsectisation';
+    case 'punaises-de-lit':
+      return theme.id === 'punaises';
+    case 'rongeurs':
+      return theme.id === 'deratisation';
+    case 'termites':
+      return theme.id === 'termites';
+    default:
+      return false;
+  }
+});
+
+const pricingOptions = theme ? {
+  title: "Tarifs et Prestations",
+  subtitle: page.attributes.content.pricingSubtitle || "Les tarifs peuvent varier selon la configuration et l'étendue du traitement nécessaire.",
+  options: theme.services.map(service => ({
+    title: service.subtitle,
+    price: service.price,
+    priceRange: service.priceRange,
+    features: service.features,
+    duration: service.duration,
+    serviceId: service.id
+  })),
+  note: "* Les tarifs sont indicatifs et peuvent varier selon l'éloignement et le niveau d'infestation"
+} : null;
+---
+
+<Layout 
+  title={page.attributes.title}
+  description={page.attributes.description}
+  type="article"
+  canonicalUrl={`https://desincal.fr/info/${slug}`}
+>
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-pest-dark to-pest-dark/90 text-white rounded-2xl p-8 mb-12">
+          <h1 class="text-4xl font-bold mb-4">{page.attributes.content.hero.title}</h1>
+          <p class="text-xl text-white/90">{page.attributes.content.hero.subtitle}</p>
+        </div>
+
+        <div class="prose max-w-none">
+          {page.attributes.content.alert && (
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg mb-8">
+              <h2 class="text-red-700 text-xl font-bold mb-2">{page.attributes.content.alert.title}</h2>
+              <p class="text-red-600">{page.attributes.content.alert.message}</p>
+            </div>
+          )}
+
+          {pricingOptions && (
+            <PricingSection 
+              title={pricingOptions.title}
+              subtitle={pricingOptions.subtitle}
+              options={pricingOptions.options}
+              note={pricingOptions.note}
+              client:load
+            />
+          )}
+
+          {page.attributes.content.sections?.map((section: any) => (
+            <div class={section.className || 'mb-12'}>
+              <h2 class="text-2xl font-bold text-pest-dark mb-4">{section.title}</h2>
+              {section.image && (
+                <img 
+                  src={section.image.url} 
+                  alt={section.image.alt} 
+                  class="w-full rounded-lg mb-8"
+                />
+              )}
+              {section.content && (
+                <div class="prose" set:html={section.content} />
+              )}
+            </div>
+          ))}
+
+          <div class="bg-pest-dark text-white rounded-xl p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Besoin d'une intervention rapide ?</h2>
+            <p class="mb-6">Nos experts sont à votre disposition pour une intervention efficace</p>
+            <a 
+              href={`/?theme=${theme?.id}#services`} 
+              class="inline-block bg-pest-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors"
+            >
+              Demandez votre devis
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Handle pricing card clicks to set both theme and service
+  document.addEventListener('DOMContentLoaded', () => {
+    const pricingCards = document.querySelectorAll('[data-service-id]');
+    pricingCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const serviceId = (e.currentTarget as HTMLElement).dataset.serviceId;
+        const theme = window.location.pathname.split('/').pop();
+        let themeId = '';
+        switch (theme) {
+          case 'cafards':
+            themeId = 'desinsectisation';
+            break;
+          case 'punaises-de-lit':
+            themeId = 'punaises';
+            break;
+          case 'rongeurs':
+            themeId = 'deratisation';
+            break;
+          case 'termites':
+            themeId = 'termites';
+            break;
+        }
+        window.location.href = `/?theme=${themeId}&service=${serviceId}#contact`;
+      });
+    });
+  });
+</script>

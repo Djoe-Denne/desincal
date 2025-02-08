@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "Traitement Anti-Termites Béziers | Protection Charpente | Desincal",
+    "description": "Expert en traitement anti-termites à Béziers et dans l'Hérault. Protection préventive et curative de charpente, barrière chimique. Certification Certibiocide, intervention garantie."
+  },
+  "hero": {
+    "title": "Protection Anti-Termites",
+    "subtitle": "Solutions professionnelles pour protéger votre maison"
+  },
+  "alert": {
+    "title": "⚠️ Protection essentielle",
+    "message": "Les dégâts causés par les termites peuvent compromettre la structure de votre maison. Une intervention précoce est cruciale pour préserver votre patrimoine."
+  },
+  "treatments": {
+    "framework": {
+      "title": "Traitement de charpente",
+      "preventive": {
+        "title": "Traitement préventif",
+        "description": "Pulvérisation d'un produit insecticide créant une barrière protectrice contre les termites et autres insectes xylophages.",
+        "price": "15-25€/m²"
+      },
+      "curative": {
+        "title": "Traitement curatif",
+        "description": "Injection de produits insecticides et fongicides directement dans le cœur de la structure en bois.",
+        "price": "30-45€/m²"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPageData, getGlobalData } from '../lib/strapi';
+
+export async function getStaticPaths() {
+  // Fallback static paths in case Strapi is not available
+  const defaultPaths = [
+    { params: { slug: 'info/cafards' } },
+    { params: { slug: 'info/punaises-de-lit' } },
+    { params: { slug: 'info/rongeurs' } },
+    { params: { slug: 'info/termites' } },
+    { params: { slug: 'legal' } }
+  ];
+
+  try {
+    // Try to get pages from Strapi
+    const response = await fetch(`${import.meta.env.STRAPI_URL || 'http://localhost:1337'}/api/pages`);
+    if (!response.ok) {
+      return defaultPaths;
+    }
+    const pages = await response.json();
+    
+    return pages.data.map((page: any) => ({
+      params: { slug: page.attributes.slug },
+      props: { page },
+    }));
+  } catch (error) {
+    console.error('Error fetching pages:', error);
+    return defaultPaths;
+  }
+}
+
+const { slug } = Astro.params;
+let page = null;
+let global = null;
+
+try {
+  page = await getPageData(slug as string);
+  global = await getGlobalData();
+} catch (error) {
+  console.error('Error fetching page data:', error);
+}
+
+// If page not found and not a default route, redirect to home
+const defaultRoutes = ['info/cafards', 'info/punaises-de-lit', 'info/rongeurs', 'info/termites', 'legal'];
+if (!page && !defaultRoutes.includes(slug as string)) {
+  return Astro.redirect('/');
+}
+---
+
+<Layout 
+  title={page?.attributes?.meta?.title || 'Desincal'}
+  description={page?.attributes?.meta?.description}
+>
+  {/* Dynamically render page sections based on content type */}
+  {page?.attributes?.content?.map((section: any) => {
+    switch (section.__component) {
+      case 'sections.hero':
+        return <Hero data={section} />;
+      case 'sections.content':
+        return <Content data={section} />;
+      case 'sections.services':
+        return <Services data={section} />;
+      case 'sections.contact':
+        return <Contact data={section} />;
+      default:
+        return null;
+    }
+  })}
+</Layout>
+</boltArtifact>
+
+To use Strapi with this site:
+
+1. You'll need to set up a Strapi instance (either locally or using Strapi Cloud)
+2. Add these environment variables to your project:
+   ```
+   STRAPI_URL=your_strapi_url
+   STRAPI_TOKEN=your_api_token
+   ```
+3. Create your content types in Strapi matching the types defined in `src/types/strapi.d.ts`
+4. Start creating and managing your content through the Strapi admin panel
+
+Would you like me to help you set up a Strapi instance or create the c

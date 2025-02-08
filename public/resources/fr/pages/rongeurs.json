@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "title": "Dératisation Professionnelle Béziers | Élimination Rats & Souris | Desincal",
+    "description": "Service de dératisation professionnelle à Béziers et dans l'Hérault. Élimination efficace des rats et souris. Intervention rapide, devis gratuit, suivi personnalisé."
+  },
+  "hero": {
+    "title": "Dératisation Professionnelle",
+    "subtitle": "Protection efficace contre les rongeurs nuisibles"
+  },
+  "alert": {
+    "title": "⚠️ Danger sanitaire",
+    "message": "Les rongeurs peuvent transmettre des maladies graves et causer d'importants dégâts matériels. Une intervention rapide est essentielle."
+  },
+  "reasons": {
+    "title": "Pourquoi agir rapidement ?",
+    "items": [
+      {
+        "title": "Dégâts matériels",
+        "description": "Rongement de câbles, meubles, cloisons"
+      },
+      {
+        "title": "Risques sanitaires",
+        "description": "Leptospirose, salmonellose"
+      },
+      {
+        "title": "Contamination",
+        "description": "Aliments contaminés par excréments"
+      }
+    ]
+  }
+}

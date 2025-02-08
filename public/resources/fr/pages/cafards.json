@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "title": "Désinsectisation Cafards à Béziers | Traitement Anti-Blattes | Desincal",
+    "description": "Service professionnel de désinsectisation des cafards à Béziers et dans l'Hérault. Traitement efficace et durable contre les blattes. Intervention rapide, devis gratuit."
+  },
+  "hero": {
+    "title": "Traitement Anti-Cafards",
+    "subtitle": "Élimination efficace et durable des blattes"
+  },
+  "alert": {
+    "title": "⚠️ Risque sanitaire",
+    "message": "Les cafards peuvent contaminer vos aliments et propager des maladies. Une intervention rapide est essentielle pour protéger votre santé."
+  },
+  "signs": {
+    "title": "Reconnaître une infestation",
+    "items": [
+      {
+        "title": "Présence nocturne",
+        "description": "Activité principalement la nuit dans les zones humides"
+      },
+      {
+        "title": "Déjections",
+        "description": "Ressemblant à du café moulu dans les coins"
+      },
+      {
+        "title": "Odeur caractéristique",
+        "description": "Une odeur désagréable et persistante"
+      },
+      {
+        "title": "Traces de passage",
+        "description": "Marques sombres sur les murs et plinthes"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Contactez-nous",
+  "form": {
+    "name": {
+      "label": "Nom *",
+      "placeholder": "Votre nom"
+    },
+    "email": {
+      "label": "Email *",
+      "placeholder": "Votre email"
+    },
+    "phone": {
+      "label": "Téléphone *",
+      "placeholder": "Votre numéro de téléphone"
+    },
+    "service": {
+      "label": "Type de service *"
+    },
+    "message": {
+      "label": "Message *",
+      "placeholder": "Votre message"
+    },
+    "consent": {
+      "text": "J'accepte que mes données personnelles soient collectées pour le traitement de ma demande. Pour en savoir plus sur la gestion de vos données et vos droits, consultez notre politique de confidentialité.",
+      "error": "Veuillez accepter la politique de confidentialité pour continuer."
+    },
+    "submit": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "success": "Votre message a été envoyé avec succès. Nous vous contacterons bientôt.",
+    "error": "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer."
+  }
+}

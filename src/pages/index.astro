@@ -4,12 +4,22 @@ import Hero from '../components/Hero';
 import Services from '../components/Services';
 import About from '../components/About';
 import ContactForm from '../components/ContactForm';
+import { getHeroSlides, getServiceFeatures, getGlobal } from '../lib/api';
+
+// Fetch data from Strapi
+const heroSlides = await getHeroSlides();
+const serviceFeatures = await getServiceFeatures();
+const global = await getGlobal();
+
+// Fallback to static data if Strapi is not available
+const slides = heroSlides.length > 0 ? heroSlides : (await import('../data/carousel.json')).slides;
+const features = serviceFeatures.length > 0 ? serviceFeatures : (await import('../data/about.json')).features;
 ---
 
-<Layout title="Desincal - Professional Pest Control Services">
+<Layout title={global?.attributes?.defaultSeo?.metaTitle || "Desincal - Professional Pest Control Services"}>
   <main>
-    <Hero client:load />
-    <About client:load />
+    <Hero slides={slides} client:load />
+    <About features={features} client:load />
     <Services client:load />
     <ContactForm client:load />
   </main>
@@ -24,7 +34,6 @@ import ContactForm from '../components/ContactForm';
     if (serviceId) {
       const contactForm = document.getElementById('contact');
       if (contactForm) {
-        // Add a small delay to ensure the form is fully loaded
         setTimeout(() => {
           contactForm.scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -32,10 +41,7 @@ import ContactForm from '../components/ContactForm';
     }
   }
 
-  // Run on initial load
   scrollToContactForm();
-
-  // Also run when hash changes (in case of navigation within the page)
   window.addEventListener('hashchange', scrollToContactForm);
 </script>
 
@@ -44,4 +50,3 @@ import ContactForm from '../components/ContactForm';
     width: 100%;
   }
 </style>
-</boltArtifact>

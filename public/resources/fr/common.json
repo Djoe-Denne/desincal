@@ -1,0 +1,42 @@
+{
+  "company": {
+    "name": "Desincal",
+    "slogan": "Expert en désinsectisation à Béziers",
+    "phone": "07 66 37 05 82",
+    "email": "contact@desincal.fr",
+    "address": {
+      "street": "9b Plan du Rouch",
+      "city": "Corneilhan",
+      "region": "Occitanie",
+      "postalCode": "34490",
+      "country": "France"
+    },
+    "hours": {
+      "weekdays": "Lundi - Vendredi: 8h - 17h",
+      "saturday": "Samedi: 8h - 17h",
+      "sunday": "Dimanche: Fermé"
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "contact": "Contact",
+    "information": "Informations"
+  },
+  "cta": {
+    "getQuote": "Demandez votre devis gratuit",
+    "contact": "Contactez-nous",
+    "interested": "Je suis intéressé"
+  },
+  "footer": {
+    "contact": "Contact",
+    "usefulLinks": "Liens utiles",
+    "hours": "Horaires",
+    "legalLinks": {
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "CGV"
+    },
+    "copyright": "Tous droits réservés"
+  }
+}

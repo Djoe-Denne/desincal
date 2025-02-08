@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "Informations légales - Desincal"
+  },
+  "sections": {
+    "legal": {
+      "title": "Mentions légales",
+      "editor": {
+        "title": "Éditeur du site",
+        "content": [
+          "DESINCAL",
+          "34490 Corneilhan",
+          "Téléphone : 07 66 37 05 82",
+          "Email : contact@desincal.fr"
+        ]
+      },
+      "hosting": {
+        "title": "Hébergement",
+        "content": [
+          "Ce site est hébergé par Netlify Inc.",
+          "44 Montgomery Street, Suite 300",
+          "San Francisco, California 94104",
+          "United States"
+        ]
+      },
+      "intellectual": {
+        "title": "Propriété intellectuelle",
+        "content": "L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques."
+      }
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "dataCollection": {
+        "title": "Collecte des données personnelles",
+        "content": "Les données personnelles collectées sur ce site sont uniquement destinées à un usage interne. En aucun cas ces données ne seront cédées ou vendues à des tiers.",
+        "collectedData": [
+          "Nom",
+          "Adresse email",
+          "Numéro de téléphone",
+          "Message"
+        ]
+      },
+      "cookies": {
+        "title": "Utilisation des cookies",
+        "content": "Notre site utilise des cookies pour améliorer votre expérience de navigation. Vous pouvez à tout moment désactiver l'utilisation des cookies en paramétrant votre navigateur."
+      },
+      "rights": {
+        "title": "Vos droits",
+        "content": "Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée, et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant. Vous pouvez exercer ces droits en nous contactant à l'adresse email : contact@desincal.fr"
+      }
+    }
+  }
+}
